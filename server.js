@@ -4,9 +4,15 @@ const mogoose = require('mongoose');
 
 const app = express();
 
+
+//middleware
+app.use(express.json({extended: false}))
+
+// db
 mogoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 }).then(() => {
     console.log("DB Connected");
 })
